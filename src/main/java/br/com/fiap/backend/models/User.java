@@ -1,5 +1,6 @@
 package br.com.fiap.backend.models;
 
+import br.com.fiap.backend.dto.InsertUserData;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -26,10 +27,10 @@ public class User {
     private String email;
     private String senha;
 
-    public User(String senha, String nome, String email) {
-        this.senha = senha;
-        this.nome = nome;
-        this.email = email;
+    public User(InsertUserData data) {
+        this.senha = data.senha();
+        this.nome = data.nome();
+        this.email = data.email();
     }
 
     @Override
