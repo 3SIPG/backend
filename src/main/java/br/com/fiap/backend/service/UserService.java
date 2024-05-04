@@ -60,9 +60,9 @@ public class UserService {
     }
 
     private void CopyToUser(UpdateUserData entity, User user) {
-        user.setNome(entity.nome());
+        user.setName(entity.name());
         user.setEmail(entity.email());
-        user.setSenha(entity.senha());
+        user.setPassword(entity.password());
     }
 
 }
