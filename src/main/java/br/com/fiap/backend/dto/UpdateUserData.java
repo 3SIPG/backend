@@ -5,8 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 
 public record UpdateUserData(
         Long id,
-        String nome,
-        String email,
-        String senha
+
+        String login,
+
+        String password
 ) {
 }

@@ -6,12 +6,10 @@ import jakarta.validation.constraints.NotBlank;
 public record InsertUserData(
 
         @NotBlank
-        String nome,
+        String login,
+
         @NotBlank
-        @Email
-        String email,
-        @NotBlank
-        String senha
+        String password
 
 ) {
 }
