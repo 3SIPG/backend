@@ -29,6 +29,11 @@ public class TrainingController {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Training findById(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
     @PutMapping
     @Transactional
     public void update(@RequestBody @Valid UpdateTrainingData data) {

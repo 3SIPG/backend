@@ -30,6 +30,11 @@ public class UserController {
         return service.findAll();
     }
 
+    @GetMapping("/{id}")
+    public User findById(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
     @PutMapping
     @Transactional
     public void update(@RequestBody @Valid UpdateUserData data) {
