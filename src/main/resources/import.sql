@@ -6,3 +6,5 @@ INSERT INTO tb_users(name,email,password) VALUES('vitor', 'email@email.com','sen
 INSERT INTO tb_users(name,email,password) VALUES('enzo', 'email@email.com','senha');
 INSERT INTO tb_users(name,email,password) VALUES('leo', 'email@email.com','senha');
 INSERT INTO tb_users(name,email,password) VALUES('vitinho', 'email@email.com','senha');
+
+INSERT INTO tb_training_user (training_id, user_id) VALUES (1, 1);

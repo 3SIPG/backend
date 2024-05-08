@@ -1,6 +1,7 @@
 package br.com.fiap.backend.models;
 
 import br.com.fiap.backend.dto.InsertUserData;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,7 +10,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Table(name = "tb_users")
 @Entity(name = "User")
@@ -26,6 +29,14 @@ public class User {
     private String name;
     private String email;
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_training_user",
+            joinColumns = @JoinColumn(name = "training_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    @JsonIgnore
+    private Set<Training> trainings = new HashSet<>();
 
     public User(InsertUserData data) {
         this.password = data.password();
