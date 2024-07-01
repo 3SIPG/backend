@@ -1,10 +1,9 @@
 package br.com.fiap.backend.controllers;
 
-
-import br.com.fiap.backend.dto.InsertUserData;
-import br.com.fiap.backend.dto.UpdateUserData;
-import br.com.fiap.backend.models.User;
-import br.com.fiap.backend.service.UserService;
+import br.com.fiap.backend.dto.InsertTrainingData;
+import br.com.fiap.backend.dto.UpdateTrainingData;
+import br.com.fiap.backend.models.Training;
+import br.com.fiap.backend.service.TrainingService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,31 +12,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
-public class UserController {
+@RequestMapping("trainings")
+public class TrainingController {
 
     @Autowired
-    private UserService service;
+    private TrainingService service;
 
     @PostMapping
     @Transactional
-    public void insert(@RequestBody @Valid InsertUserData data) {
-        service.insert(new User(data));
+    public void insert(@RequestBody @Valid InsertTrainingData data) {
+        service.insert(new Training(data));
     }
 
     @GetMapping
-    public List<User> findAll() {
+    public List<Training> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id) {
+    public Training findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
     @PutMapping
     @Transactional
-    public void update(@RequestBody @Valid UpdateUserData data) {
+    public void update(@RequestBody @Valid UpdateTrainingData data) {
         service.update(data);
     }
 
@@ -46,7 +45,4 @@ public class UserController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
-
 }
-
-
