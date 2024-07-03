@@ -2,7 +2,7 @@ package br.com.fiap.backend.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record InsertTrainingData(
+public record InsertOnboardData(
 
         @NotBlank
         String title

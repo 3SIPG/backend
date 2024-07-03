@@ -1,6 +1,6 @@
 package br.com.fiap.backend.dto;
 
-public record UpdateTrainingData(
+public record UpdateOnboardData(
         Long id,
         String title
 ) {

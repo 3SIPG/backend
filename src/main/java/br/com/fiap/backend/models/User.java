@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "tb_users")
@@ -29,14 +28,6 @@ public class User {
     private String name;
     private String email;
     private String password;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tb_training_user",
-            joinColumns = @JoinColumn(name = "training_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    @JsonIgnore
-    private Set<Training> trainings = new HashSet<>();
 
     public User(InsertUserData data) {
         this.password = data.password();

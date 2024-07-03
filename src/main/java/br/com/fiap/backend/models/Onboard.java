@@ -1,10 +1,7 @@
 package br.com.fiap.backend.models;
 
-import br.com.fiap.backend.dto.InsertTrainingData;
-import br.com.fiap.backend.dto.InsertUserData;
+import br.com.fiap.backend.dto.InsertOnboardData;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +11,13 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Table(name = "tb_trainings")
-@Entity(name = "Training")
+@Table(name = "tb_onboard")
+@Entity(name = "Onboard")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training {
+public class Onboard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,11 +25,10 @@ public class Training {
 
     private String title;
 
-    @ManyToMany(mappedBy = "trainings", fetch = FetchType.EAGER)
-    private Set<User> users = new HashSet<>();
+    @OneToMany(mappedBy = "onboard", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Video> videos = new HashSet<>();
 
-
-    public Training(InsertTrainingData data) {
+    public Onboard(InsertOnboardData data) {
         this.title = data.title();
     }
 
@@ -40,8 +36,8 @@ public class Training {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Training training = (Training) o;
-        return Objects.equals(id, training.id) && Objects.equals(title, training.title);
+        Onboard onboard = (Onboard) o;
+        return Objects.equals(id, onboard.id) && Objects.equals(title, onboard.title);
     }
 
     @Override
